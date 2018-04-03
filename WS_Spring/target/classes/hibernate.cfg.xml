@@ -6,11 +6,10 @@
 <hibernate-configuration>  
     <session-factory>  
 		
-      <property name="dialect">org.hibernate.dialect.Oracle8iDialect</property>
+      <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
       
         <!-- 显示sql语句 -->  
         <property name="show_sql">true</property>  
-        
 		<!-- 自动更新 -->
 		<property name="hbm2ddl.auto">update</property>
     </session-factory>  
