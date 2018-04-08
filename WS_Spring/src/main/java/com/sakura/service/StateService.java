@@ -11,11 +11,15 @@ import com.sakura.entity.State;
 public interface StateService {
 	public int saveState(State state);
 	public void updateState(State state);
-
+	/**
+	 * 判断是否存在同名state,存在返回true，不存在返回false
+	 * @param name
+	 * @return
+	 */
+	public Boolean isExitStateName(String name);
 	public State findStateByName(String name);
-	public State findState(State state);
 	public void deleteState(State state);
-
+	public State findStateByID(Integer stateID);
 	public List<State> findAllList();
 	
 	public List<State> findStateByKind(Integer stateKind);

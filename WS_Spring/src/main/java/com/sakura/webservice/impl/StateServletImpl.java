@@ -20,15 +20,13 @@ import com.sakura.webservice.StateServlet;
  * @author sakura
  *
  */
-@Component("stateServletForAD")
+@Component("stateServletForAD")//声明bean
 @WebService
 public class StateServletImpl implements StateServlet {
 	@Resource
 	private StateServiceImpl stateService;
 	public int addState(State state) {
-		System.out.println("我试试");
 		int i=stateService.saveState(state);
-		System.out.println("返回值为"+i);
 			return i;
 	}
 
