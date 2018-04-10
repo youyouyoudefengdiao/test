@@ -8,9 +8,6 @@ import javax.jws.WebService;
 import org.springframework.stereotype.Component;
 
 import com.sakura.entity.State;
-import com.sakura.entity.User;
-import com.sakura.service.StateService;
-import com.sakura.service.UserService;
 import com.sakura.service.impl.StateServiceImpl;
 import com.sakura.webservice.StateServlet;
 
@@ -31,14 +28,7 @@ public class StateServletImpl implements StateServlet {
 	}
 
 	public int deleteState(State state) {
-		
-		try {
-			stateService.deleteState(state);
-			return 1;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0;
+		return stateService.deleteState(state);
 	}
 
 	public int updateState(State state) {
@@ -58,7 +48,7 @@ public class StateServletImpl implements StateServlet {
 
 	public List<State> findAllList() {
 		// TODO Auto-generated method stub
-		return null;
+		return stateService.findAllList();
 	}
 
 	public List<State> findStateByKind(Integer stateKind) {

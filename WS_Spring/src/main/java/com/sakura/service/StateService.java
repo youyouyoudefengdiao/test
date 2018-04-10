@@ -18,9 +18,13 @@ public interface StateService {
 	 */
 	public Boolean isExitStateName(String name);
 	public State findStateByName(String name);
-	public void deleteState(State state);
-	public State findStateByID(Integer stateID);
+	public int deleteState(State state);
 	public List<State> findAllList();
-	
 	public List<State> findStateByKind(Integer stateKind);
+	/**
+	 * 根据id判断state是否存在，不存在返回false，存在返回true
+	 * @param id
+	 * @return
+	 */
+	public Boolean isExitStateID(Integer id);
 }

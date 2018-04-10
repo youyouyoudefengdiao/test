@@ -8,19 +8,45 @@
 <struts>
 
 	<package name="user_login" extends="struts-default">
+	<!-- 全局result -->
+	<global-results>
+	<result name="success">success.jsp</result>
+			<result name="error">false.jsp</result>
+	</global-results>
 		<!-- 用户登录 -->
 		<action name="login" class="com.sakura.action.UserLogin"
 			method="userLogin">
-			<result name="success">success.jsp</result>
-			<result name="error">false.jsp</result>
 		</action>
 		<!-- state添加测试 -->
 		<action name="addState" class="com.sakura.action.StateAction"
 			method="addState">
-			<result name="success">success.jsp</result>
-			<result name="error">false.jsp</result>
 		</action>
-
+	
+	
+	<action name="updateState"  class="com.sakura.action.StateAction"
+	method="updateState"
+	>
+	</action>
+	
+	
+	<action name="setStateValue" class="com.sakura.action.StateAction"
+	method="setStateValue"
+	>
+	<result name="success">state_update.jsp</result>
+	</action>
+	
+	
+	<!-- state删除测试 -->
+		<action name="delState" class="com.sakura.action.StateAction" 
+		method="deleteState" >
+		</action>
+		
+		<!-- 显示所有state -->
+		<action name="showState" class="com.sakura.action.StateAction"
+		method="showState"
+		>
+		<result name="success">state_show1.jsp</result>
+		</action>
 	</package>
 
 </struts>

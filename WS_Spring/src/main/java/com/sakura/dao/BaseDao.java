@@ -170,5 +170,4 @@ public interface BaseDao<T> {
 	 * @return
 	 */
 	public Integer executeHql(String hql, List<Object> param);
-
 }

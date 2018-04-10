@@ -7,8 +7,6 @@ import org.apache.cxf.headers.Header;
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 public class UserInterceptor extends AbstractPhaseInterceptor<SoapMessage> {
 	public UserInterceptor() {

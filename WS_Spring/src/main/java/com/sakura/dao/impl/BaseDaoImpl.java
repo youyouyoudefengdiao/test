@@ -35,10 +35,13 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 	}
 
 	public void delete(T o) {
-		this.getCurrentSession().delete(o);
+		this.getCurrentSession().clear();
+			this.getCurrentSession().delete(o);
+			
 	}
 
 	public void update(T o) {
+		this.getCurrentSession().clear();
 		this.getCurrentSession().update(o);
 	}
 

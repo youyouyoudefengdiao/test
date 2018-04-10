@@ -5,18 +5,16 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.sakura.dao.BaseDao;
 import com.sakura.entity.State;
 import com.sakura.service.StateService;
+
 @Component("stateService")
-public class StateServiceImpl implements StateService{
+public class StateServiceImpl implements StateService {
 	@Resource
 	private BaseDao<State> baseDao;
-	
-	
+
 	public int saveState(State state) {
 		// TODO Auto-generated method stub
 		baseDao.save(state);
@@ -30,27 +28,50 @@ public class StateServiceImpl implements StateService{
 
 	public State findStateByName(String name) {
 		// TODO Auto-generated method stub
-		return baseDao.get("from State s where s.stateName=?",new Object[]{name});
+		return baseDao.get("from State s where s.stateName=?", new Object[] { name });
 	}
 
-	public Boolean isExitStateName(String name){
-		State state=new State();
+	public Boolean isExitStateName(String name) {
+		State state = new State();
 		try {
-			state.setStateName(baseDao.get("from State s where s.stateName=?",new Object[]{name}).getStateName());
-			
+			state.setStateName(baseDao.get("from State s where s.stateName=?", new Object[] { name }).getStateName());
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			state.setStateName("");
 		}
-		if(state.getStateName().equals(name))
+		if (state.getStateName().equals(name))
 			return true;
 		else
 			return false;
 	}
-	
-	public void deleteState(State state) {
+
+	public Boolean isExitStateID(Integer id) {
+		State state = new State();
+		try {
+			state.setStateID(baseDao.get("from State s where s.stateID=?", new Object[] { id }).getStateID());
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			state.setStateID(0);
+		}
+		if (state.getStateID() != 0)
+			return true;
+		else
+			return false;
+	}
+
+	public int deleteState(State state) {
 		// TODO Auto-generated method stub
-		baseDao.delete(state);
+		try {
+			
+			baseDao.delete(state);
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+			return 0;
+		}
+		return 1;
 	}
 
 	public List<State> findAllList() {
@@ -60,11 +81,7 @@ public class StateServiceImpl implements StateService{
 
 	public List<State> findStateByKind(Integer stateKind) {
 		// TODO Auto-generated method stub
-		return baseDao.find("from State s where s.stateKind=?",new Object[]{stateKind});
-	}
-
-	public State findStateByID(Integer stateID){
-		return baseDao.get(State.class, stateID);
+		return baseDao.find("from State s where s.stateKind=?", new Object[] { stateKind });
 	}
 
 }
